@@ -18,3 +18,5 @@ export const fetchData = async () => {
     console.log("error occured" + error);
   }
 };
+
+export const fetchDailyData = async () => {};

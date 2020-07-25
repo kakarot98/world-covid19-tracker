@@ -1,9 +1,9 @@
 body {
-    background-color: rgb(213, 224, 224);
+  background-color: #f7f7f7;
 }
 
 .container {
-    display: flex;
-    text-align: center;
-    justify-content: center;
+  display: flex;
+  text-align: center;
+  justify-content: center;
 }
