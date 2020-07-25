@@ -10,27 +10,25 @@ import styles from "./App.module.css";
 import { fetchData } from "./api";
 
 class App extends React.Component {
-
   //there are many ways to create a state but this one is simplest with least code
   //you can use constructor but its not needed
   state = {
-    data: {}
-  }
+    data: {},
+  };
 
   //put async keyword before componentdidmount as it is a built in function
   async componentDidMount() {
-    const fetechedData = await fetchData(); //this will be await as well since we have to wait fir the data to be fetched    
-    this.setState({ data: fetchData })   //set the state to the fetched data
-    console.log(fetechedData);
+    const fetchedData = await fetchData(); //this will be await as well since we have to wait fir the data to be fetched
+    this.setState({ data: fetchedData }); //set the state to the fetched data
+    //console.log(fetechedData);
   }
 
   render() {
-
-    const { data } = this.state
+    const { data } = this.state;
     return (
       <div className={styles.container}>
         <h1>App Heading</h1>
-        <Cards data={data}/>
+        <Cards data={data} />
         <CountryPicker />
         <Chart />
       </div>
