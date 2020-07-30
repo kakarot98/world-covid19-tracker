@@ -3,4 +3,4 @@ API used - https://github.com/mathdroid/covid-19-api (Please give him a star for
 
 Here is a GIF of the project in stages:
 
-1. ![]()
+1. ![](https://github.com/kakarot98/world-covid19-tracker/blob/master/src/recording1.gif)
