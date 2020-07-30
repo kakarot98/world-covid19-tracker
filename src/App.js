@@ -14,6 +14,7 @@ class App extends React.Component {
   //you can use constructor but its not needed
   state = {
     data: {},
+    country: "",
   };
 
   //put async keyword before componentdidmount as it is a built in function
@@ -23,14 +24,20 @@ class App extends React.Component {
     //console.log(fetechedData);
   }
 
+  handleCountryChange = async (country) => {
+    const fetchedData = await fetchData(country);
+
+    this.setState({ data: fetchedData, country: country });
+  };
+
   render() {
-    const { data } = this.state;
+    const { data, country } = this.state;
     return (
       <div className={styles.container}>
         <h1>App Heading</h1>
         <Cards data={data} />
-        <CountryPicker />
-        <Chart />
+        <CountryPicker handleCountryChange={this.handleCountryChange} />
+        <Chart data={data} country={country}/>
       </div>
     );
   }
