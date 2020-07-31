@@ -6,7 +6,7 @@ import React from "react";
 //above way of importing files is too much code hence below is the simpler way
 
 import { Cards, Chart, CountryPicker } from "./components";
-import styles from "./App.module.css";
+import "./style.css";
 import { fetchData } from "./api";
 
 class App extends React.Component {
@@ -15,6 +15,7 @@ class App extends React.Component {
   state = {
     data: {},
     country: "",
+    darkMode: false,
   };
 
   //put async keyword before componentdidmount as it is a built in function
@@ -31,13 +32,28 @@ class App extends React.Component {
   };
 
   render() {
-    const { data, country } = this.state;
+    const { data, country, darkMode } = this.state;
     return (
-      <div className={styles.container}>
-        <h1>App Heading</h1>
-        <Cards data={data} />
-        <CountryPicker handleCountryChange={this.handleCountryChange} />
-        <Chart data={data} country={country}/>
+      <div className={darkMode ? "dark" : "light"}>
+        <nav className="navBar">
+          <div className="toggle-container">
+            <span className="label">LightMode</span>
+            <label className="switch">
+              <input
+                onChange={() => this.setState({darkMode: !darkMode})}
+                type="checkbox"
+              />
+              <span className="slider round" />
+            </label>
+            <span className="label">DarkMode</span>
+          </div>
+        </nav>
+        <div className="container">
+          <h1>COVID-19 TRACKER</h1>
+          <Cards data={data} />
+          <CountryPicker handleCountryChange={this.handleCountryChange} />
+          <Chart data={data} country={country} />
+        </div>
       </div>
     );
   }
